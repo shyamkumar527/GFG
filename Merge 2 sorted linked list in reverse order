@@ -1,0 +1,36 @@
+//POTD 8/1/24
+Node *t1=node1,*t2=node2,*p=NULL,*n,*lst,*ans=NULL;
+if(node1==NULL and node2==NULL) return NULL;
+else if(node1==NULL) ans=node2;
+else if(node2==NULL) ans=node1;
+else{
+    while(t1!=NULL and t2!=NULL){
+        lst=t1;
+        if(t1->data<=t2->data){
+            p=t1;
+            t1=t1->next;
+        }
+        else{
+            n=t2->next;
+            if(p==NULL) p=t2;
+            else p->next=t2;
+            p=t2;
+            t2->next=t1;
+            t2=n;
+        }
+        if(ans==NULL) ans=p;
+    }
+    while(t1!=NULL){
+        lst=t1;
+        t1=t1->next;
+    }
+    lst->next=t2;
+}
+p=NULL;
+while(ans!=NULL){
+    n=ans->next;
+    ans->next=p;
+    p=ans;
+    ans=n;
+}
+return p;
