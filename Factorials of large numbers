@@ -1,0 +1,20 @@
+vector<int> v;
+int x=0,c,f;
+for(int i=1;i<=n;i++){
+    if(i==1) v.push_back(i);
+    else{
+        c=0;
+        for(int j=0;j<v.size();j++){
+            x=(v[j]*i)+c;
+            c=x/10;
+            v[j]=x%10;
+        }
+        while(c>0){
+            f=c%10;
+            c/=10;
+            v.push_back(f);
+        }
+    }
+}
+reverse(v.begin(),v.end());
+return v;
