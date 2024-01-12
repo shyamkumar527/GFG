@@ -1,0 +1,33 @@
+vector<long long> arr(1e6+1,1);
+class Solution{
+public:
+    void sieve(){
+        arr[0]=arr[1]=0;
+        for(long long i=2;i<=1e6;i++){
+            if(arr[i]==1){
+                arr[i]=i;
+                for(long long j=2*i;j<=1e6;j+=i){
+                    arr[j]=i;
+                }
+            }
+        }
+    }
+    vector<int> orderedPrime(int n){
+        vector<int> v;
+        map<int,int> mp;
+        int f=1,x;
+        sieve();
+        while(n>1){
+            x=arr[n];
+            mp[x]++;
+            n/=x;
+        }
+        for(auto it:mp){
+            v.push_back(it.second);
+            f*=(it.second+1);
+        }
+        sort(v.begin(),v.end());
+        v.push_back(f);
+        return v;
+    }
+};
