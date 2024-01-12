@@ -17,4 +17,4 @@ queue<int> modifyQueue(queue<int> q, int k){
             c++;
         }
         return q;
-    }
+}
