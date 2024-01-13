@@ -1,0 +1,29 @@
+//POTD 13/1/24
+Node* insertionSort(struct Node* head){
+    int n=0,k,ms;
+    Node *temp=head,*temp2;
+    while(temp!=NULL){
+        n++;
+        temp=temp->next;
+    }
+    if(n<2) return head;
+    k=n-1;
+    for(int i=0;i<n;i++){
+        int swap=0;
+        temp=head;
+        temp2=head->next;
+        for(int j=0;j<=k-1;j++){
+            if(temp2->data<temp->data){
+                swap++;
+                ms=temp2->data;
+                temp2->data=temp->data;
+                temp->data=ms;
+            }
+            temp=temp->next;
+            temp2=temp2->next;
+        }
+        if(swap==0) break;
+        k--;
+    }
+    return head;
+}
