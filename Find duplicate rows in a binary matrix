@@ -1,0 +1,8 @@
+//POTD 14/1/24
+map<vector<int>,int> mp;
+vector<int> v;
+for(int i=0;i<mat.size();i++){
+    if(mp[mat[i]]>0) v.push_back(i);
+    else mp[mat[i]]++;
+}
+return v;
