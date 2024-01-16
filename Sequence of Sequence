@@ -1,0 +1,27 @@
+//POTD 16-1-24
+if(n>7) return 0;
+if(n==1) return m;
+if(m<(pow(2,(n-1)))) return 0;
+if(m==(pow(2,(n-1)))) return 1;
+int c=1,x=n-2,num;
+vector<int> v(n);
+v[0]=1;
+for(int i=1;i<n;i++) v[i]=v[i-1]*2;
+c+=(m-v[n-1]);
+while(1){
+    if(v[x]+1<=m){
+        num=(v[x]+1)*pow(2,n-x-1);
+        if(num<=m){
+            v[x]+=1;
+            c++;
+            for(int i=x+1;i<n;i++){
+                v[i]=v[i-1]*2;
+            }
+            x=n-1;
+        }
+        else x--;
+    }
+    else x--;
+    if(x<0) break;
+}
+return c;
